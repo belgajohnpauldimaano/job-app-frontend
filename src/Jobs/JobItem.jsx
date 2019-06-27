@@ -7,7 +7,6 @@ import graduationcap from "./../assets/images/graduation-cap-solid.svg";
 import clock from "./../assets/images/clock-regular.svg";
 export default function JobItem({
   job_title,
-  salary_range_filters,
   salary_range_from,
   salary_range_to,
   job_location,

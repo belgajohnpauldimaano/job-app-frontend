@@ -6,22 +6,18 @@ export default function JobList({
   degree,
   job_type,
   job_created_at,
-  salary_range_filters,
   salary_range_from,
   salary_range_to,
   xp_lvl,
   company_logo,
   company_name
 }) {
-  //   console.log(salary_range_filters);
-  //   const salary_range = ``;
   const props = {
     job_title,
     job_location,
     degree,
     job_type,
     job_created_at,
-    salary_range_filters,
     salary_range_from,
     salary_range_to,
     xp_lvl,

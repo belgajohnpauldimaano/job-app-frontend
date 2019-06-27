@@ -2,18 +2,7 @@ import { take, fork, call, put } from "redux-saga/effects";
 import axios from "axios";
 import JOBS_ACTION_TYPES from "./JobsActionsTypes";
 
-import {
-  testActionInProgress,
-  testActionCompleted,
-  searchJobsInProgress,
-  searchJobsCompleted
-} from "./JobsActions";
-
-function* _testAction(data) {
-  yield put(testActionInProgress());
-
-  yield put(testActionCompleted(data));
-}
+import { searchJobsInProgress, searchJobsCompleted } from "./JobsActions";
 
 function* _searchJobs({ page, query }) {
   yield put(searchJobsInProgress());
@@ -51,15 +40,9 @@ function* _searchJobs({ page, query }) {
 
 export default function* JobsSaga() {
   while (true) {
-    const { type, payload } = yield take([
-      JOBS_ACTION_TYPES.TEST_ACTION,
-      JOBS_ACTION_TYPES.SEARCH_JOBS
-    ]);
+    const { type, payload } = yield take([JOBS_ACTION_TYPES.SEARCH_JOBS]);
 
     switch (type) {
-      case JOBS_ACTION_TYPES.TEST_ACTION:
-        yield fork(_testAction, payload);
-        break;
       case JOBS_ACTION_TYPES.SEARCH_JOBS:
         yield fork(_searchJobs, payload);
         break;
